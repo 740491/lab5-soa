@@ -13,6 +13,7 @@ public class Router extends RouteBuilder {
     from(DIRECT_URI)
       .log("Body contains \"${body}\"")
       .log("Searching twitter for \"${body}\"!")
+            .process(new maxProcess())
       .toD("twitter-search:${body}")
       .log("Body now contains the response from twitter:\n${body}");
   }
